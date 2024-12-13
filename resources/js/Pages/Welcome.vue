@@ -30,3 +30,31 @@ const props = defineProps({
 
     </div>
 </template>
+<style scoped>
+
+@media (min-width: 800px) {
+  .categories {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+@media (min-width: 1000px) {
+  .categories {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+@media (min-width: 1150px) {
+  .categories {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+@media (min-width: 1300px) {
+  .categories {
+    margin-left: 350px;
+    margin-right: 350px;
+  }
+}
+</style>
+
