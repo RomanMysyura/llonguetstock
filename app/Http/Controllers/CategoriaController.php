@@ -16,5 +16,11 @@ class CategoriaController extends Controller
         'category' => $category
     ]);
 }
+public function getallcatories()
+{
+    $categories = Category::all();
+    return response()->json($categories);
+}
+
 
 }

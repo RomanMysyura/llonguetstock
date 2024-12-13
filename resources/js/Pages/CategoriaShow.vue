@@ -47,7 +47,7 @@ const deleteLastDigit = () => {
             {{ category.name }}
         </h1>
 
-        <div class="space-y-4 p-5 rounded">
+        <div class="space-y-4 p-5 rounded products">
             <div v-for="product in category.products" :key="product.id" class="flex items-center justify-between">
                 <span class="text-lg text-black">{{ product.name }}</span>
 
@@ -116,3 +116,30 @@ const deleteLastDigit = () => {
         </dialog>
     </div>
 </template>
+<style scoped>
+
+@media (min-width: 800px) {
+  .products {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+@media (min-width: 1000px) {
+  .products {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+@media (min-width: 1150px) {
+  .products {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+@media (min-width: 1300px) {
+  .products {
+    margin-left: 350px;
+    margin-right: 350px;
+  }
+}
+</style>
