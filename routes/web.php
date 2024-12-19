@@ -7,6 +7,9 @@ use Inertia\Inertia;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+
+
 
 use App\Models\Category;
 
@@ -32,4 +35,9 @@ Route::get('/admin', [AdminController::class, 'show']);
 
 Route::get('/{id}', [CategoriaController::class, 'show']);
 Route::get('/api/getallcatories', [CategoriaController::class, 'getallcatories']);
+
+
+Route::post('/changeproductquanity', [ProductController::class, 'changeproductquanity']);
+
+
 require __DIR__.'/auth.php';
