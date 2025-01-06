@@ -9,7 +9,7 @@ const props = defineProps({
 <template>
 
     <Head title="Welcome" />
-    <div class="h-screen w-full bg-white">
+    <div class="h-auto w-full bg-white pb-10">
 
         <div class="title-div flex justify-center gap-2 pt-5">
             <p class="text-amber-900 font-bold text-4xl">Informació del magatzem</p>

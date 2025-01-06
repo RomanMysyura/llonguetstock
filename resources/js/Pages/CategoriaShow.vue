@@ -49,7 +49,7 @@ const confirmChange = () => {
 </script>
 
 <template>
-    <div class="h-screen w-full bg-white p-10">
+    <div class="h-auto w-full bg-white p-10">
         <Link href="/" class="flex bg-amber-900 w-32 justify-center rounded">
             <img src="/img/return.svg" alt="ok" class="h-6 w-auto" />
             <p class="text-white">Tornar</p>

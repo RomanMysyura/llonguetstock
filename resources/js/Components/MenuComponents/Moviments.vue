@@ -34,23 +34,27 @@ onMounted(fetchMovements);
 
 <template>
     <div class="h-full w-full bg-white p-2">
-        <div class="text-black font-bold text-center text-3xl mb-8">
+        <div class="text-black font-bold text-center text-3xl mb-2">
             <p>Moviments de Productes</p>
         </div>
-
         <div v-for="(products, date) in groupedMovements" :key="date" class="mb-8 p-2">
-            <h2 class="text-xl font-bold mb-1 text-center text-black">{{ date }}</h2>
+            <div class="flex items-center justify-center gap-2 bg-amber-900 rounded">
+                <h2 class="text-2xl font-bold text-center text-white">{{ date }}</h2>
+                
+            </div>
+
             <table class="table-auto w-full">
-                <thead> 
+                <thead>
                     <tr class="text-amber-900">
                         <th class="px-4 py-2 text-left">Producte</th>
-                        <th class="px-4 py-2">Valor Antes</th>
-                        <th class="px-4 py-2">Valor Después</th>
+                        <th class="px-4 py-2">Cantidad Inicial</th>
+                        <th class="px-4 py-2">Cantidad Final</th>
                         <th class="px-4 py-2">Cambi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(movement, name) in products" :key="name" class="text-center text-black">
+                    <tr v-for="(movement, name, index) in products" :key="name"
+                        :class="index % 2 === 0 ? 'bg-gray-100' : 'bg-white'" class="text-center text-black">
                         <td class="px-4 py-2 text-left">{{ name }}</td>
                         <td class="px-4 py-2">{{ movement.beforevalue }}</td>
                         <td class="px-4 py-2">{{ movement.aftervalue }}</td>

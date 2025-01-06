@@ -16,11 +16,31 @@ class CategoriaController extends Controller
         'category' => $category
     ]);
 }
-public function getallcatories()
+public function getallcategories()
 {
-    $categories = Category::all();
+    $categories = Category::with('products')->get();
     return response()->json($categories);
 }
 
+
+
+public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Guardar la imagen en public/img
+        $imagePath = $request->file('image')->store('img', 'public');
+
+        // Guardar la categoría en la base de datos
+        $category = Category::create([
+            'name' => $request->name,
+            'imageurl' => '/storage/' . $imagePath
+        ]);
+
+        return response()->json(['message' => 'Categoría creada con éxito', 'category' => $category]);
+    }
 
 }
