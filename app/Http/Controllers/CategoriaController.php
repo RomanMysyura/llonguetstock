@@ -31,10 +31,10 @@ public function store(Request $request)
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Guardar la imagen en public/img
+        
         $imagePath = $request->file('image')->store('img', 'public');
 
-        // Guardar la categoría en la base de datos
+        
         $category = Category::create([
             'name' => $request->name,
             'imageurl' => '/storage/' . $imagePath
