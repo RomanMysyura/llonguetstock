@@ -40,4 +40,20 @@ class ProductController extends Controller
 
         return response()->json(['success' => true, 'quantity' => $product->quantity]);
     }
+
+    public function getallmovements(Request $request)
+{
+    $movements = Movement::orderBy('created_at', 'desc')->get()->map(function ($movement) {
+        return [
+            'name' => $movement->name,
+            'beforevalue' => $movement->beforevalue,
+            'aftervalue' => $movement->aftervalue,
+            'date' => $movement->created_at->format('Y-m-d')
+        ];
+    });
+
+    return response()->json($movements);
+}
+
+    
 }
