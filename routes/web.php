@@ -34,7 +34,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin', [AdminController::class, 'show']);
 
 Route::get('/{id}', [CategoriaController::class, 'show']);
-Route::get('/api/getallcatories', [CategoriaController::class, 'getallcatories']);
+Route::post('/api/createcategory', [CategoriaController::class, 'store']);
+Route::get('/api/getallcategories', [CategoriaController::class, 'getallcategories']);
 Route::get('/api/getallmovements', [ProductController::class, 'getallmovements']);
 
 Route::post('/changeproductquanity', [ProductController::class, 'changeproductquanity']);
