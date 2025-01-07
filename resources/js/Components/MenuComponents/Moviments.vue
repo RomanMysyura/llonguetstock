@@ -11,7 +11,6 @@ const fetchMovements = async () => {
         const response = await axios.get('/api/getallmovements');
         movements.value = response.data;
 
-        // Ordenamos por fecha/hora ascendente
         movements.value.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
 
 
@@ -30,7 +29,6 @@ const fetchMovements = async () => {
                     aftervalue: movement.aftervalue
                 };
             } else {
-                // Actualizamos la cantidad final con el último registro
                 groupedMovements.value[dateKey][movement.name].aftervalue = movement.aftervalue;
             }
         });
@@ -39,8 +37,6 @@ const fetchMovements = async () => {
     }
 };
 
-
-// Llamar después de una actualización o modificación de datos
 fetchMovements();
 
 
