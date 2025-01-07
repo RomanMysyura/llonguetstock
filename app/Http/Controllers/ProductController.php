@@ -43,17 +43,21 @@ class ProductController extends Controller
 
     public function getallmovements(Request $request)
 {
-    $movements = Movement::orderBy('created_at', 'desc')->get()->map(function ($movement) {
+    $movements = Movement::orderBy('created_at', 'asc')->get()->map(function ($movement) {
         return [
-            'name' => $movement->name,
-            'beforevalue' => $movement->beforevalue,
-            'aftervalue' => $movement->aftervalue,
-            'date' => $movement->created_at->format('Y-m-d')
+            'name'         => $movement->name,
+            'beforevalue'  => $movement->beforevalue,
+            'aftervalue'   => $movement->aftervalue,
+            // Para agrupar por día
+            'date'         => $movement->created_at->format('Y-m-d'),
+            // Para ordenar por fecha/hora exacta
+            'datetime'     => $movement->created_at->format('Y-m-d H:i:s'),
         ];
     });
 
     return response()->json($movements);
 }
+
 
     
 }
