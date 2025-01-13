@@ -1,25 +1,10 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
-
-defineProps({
-    canResetPassword: {
-        type: Boolean,
-    },
-    status: {
-        type: String,
-    },
-});
+import { useForm } from '@inertiajs/vue3';
+import LoginAnimation from './Animations/LoginAnimation.vue';
 
 const form = useForm({
     email: '',
     password: '',
-    remember: false,
 });
 
 const submit = () => {
@@ -30,71 +15,29 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Log in" />
+   <div class="relative flex items-center justify-center h-screen bg-gray-100">
+    <LoginAnimation class="animation" />
+    <form @submit.prevent="submit" class="p-6 bg-white rounded shadow-md w-80 z-10 relative">
+            <h2 class="text-2xl font-bold mb-4 text-center text-black">Iniciar sessió</h2>
 
-        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-            {{ status }}
-        </div>
+            <input v-model="form.email" type="email" placeholder="Correu electrònic" required
+                class="w-full p-2 mb-3 border border-gray-300 rounded text-black focus:outline-none focus:ring-1 focus:ring-amber-900 focus:border-amber-900" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
+            <input v-model="form.password" type="password" placeholder="Contrasenya" required
+                class="w-full p-2 mb-3 border border-gray-300 rounded text-black focus:outline-none focus:ring-1 focus:ring-amber-900 focus:border-amber-900" />
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4 block">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600"
-                        >Remember me</span
-                    >
-                </label>
-            </div>
-
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Forgot your password?
-                </Link>
-
-                <PrimaryButton
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Log in
-                </PrimaryButton>
-            </div>
+            <button type="submit" :disabled="form.processing"
+                class="w-full bg-amber-900 text-white py-2 rounded hover:bg-amber-800 disabled:opacity-50">
+                Iniciar sessió
+            </button>
         </form>
-    </GuestLayout>
+    </div>
+   
 </template>
+<style scoped>
+.animation {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+</style>
