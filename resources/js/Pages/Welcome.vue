@@ -20,7 +20,7 @@ const props = defineProps({
         </div>
         <div class="categories grid grid-cols-2 gap-8 justify-items-center mt-10 ">
             <template v-for="category in categories" :key="category.id">
-                <Link :href="`/${category.id}`" class="flex flex-col items-center justify-center border border-black rounded p-4 w-48 h-48 bg-gray-100 hover:bg-gray-200 transition">
+                <Link :href="`/category/${category.id}`" class="flex flex-col items-center justify-center border border-black rounded p-4 w-48 h-48 bg-gray-100 hover:bg-gray-200 transition">
                     <img :src="category.imageurl" :alt="category.name" class="h-24 w-auto" />
                     <p class="mt-2 text-black font-medium text-xl">{{ category.name }}</p>
                 </Link>
