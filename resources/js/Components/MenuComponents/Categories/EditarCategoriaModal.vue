@@ -79,7 +79,6 @@ const confirmDeletion = () => {
         <DeleteProduct @click="showConfirmMessage" />
       </div>
       
-      
       <div v-else class="flex flex-col items-center justify-center h-72">
         <p class="text-center text-xl font-bold mb-6">
           ¿Seguro que quieres eliminar la categoría?
