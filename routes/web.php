@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('admin')->group(function () {
     Route::get('/admin', [AdminController::class, 'show']);
     Route::post('/changeproductquanity', [ProductController::class, 'changeproductquanity']);
+    Route::post('/unsignproduct', [ProductController::class, 'unsignproduct']);
 });
 
 

@@ -15,12 +15,16 @@ return new class extends Migration
         $table->id();
         $table->string('name');
         $table->integer('quantity');
-        $table->unsignedBigInteger('category_id');
+        $table->unsignedBigInteger('category_id')->nullable(); // <--- Aquí lo hacemos nullable
         $table->timestamps();
-
-        // Opcional: Añadir la clave foránea si la tabla categories ya existe
-        $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+    
+        // Definimos la foreign key
+        $table->foreign('category_id')
+              ->references('id')
+              ->on('categories')
+              ->onDelete('cascade');
     });
+    
 }
 
 
