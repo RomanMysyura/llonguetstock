@@ -19,11 +19,17 @@ class Croissant {
     this.y = -100;
     this.size = Math.random() * 40 + 30;
     this.speed = Math.random() * 2 + 1;
+    this.rotation = 0;
   }
   draw(ctx) {
-    ctx.drawImage(croissantImg, this.x, this.y, this.size, this.size);
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotation);
+    ctx.drawImage(croissantImg, 0, 0, this.size, this.size);
+    ctx.restore();
   }
   update() {
+    this.rotation += 0.01;
     this.y += this.speed;
     if (this.y > canvasRef.value.height) {
       this.y = -100;
@@ -38,11 +44,13 @@ class Bread {
     this.y = -100;
     this.size = Math.random() * 40 + 30;
     this.speed = Math.random() * 2 + 1;
+    this.rotation = 0;
   }
   draw(ctx) {
     ctx.drawImage(teaImg, this.x, this.y, this.size, this.size);
   }
   update() {
+    this.rotation += 0.01;
     this.y += this.speed;
     if (this.y > canvasRef.value.height) {
       this.y = -100;

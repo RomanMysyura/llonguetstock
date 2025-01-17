@@ -58,6 +58,20 @@ class ProductController extends Controller
     return response()->json($movements);
 }
 
+public function unsignproduct(Request $request)
+{
+    $request->validate([
+        'product_id' => 'required|exists:products,id',
+    ]);
+
+    $product = Product::findOrFail($request->product_id);
+    $product->category_id = null;
+    $product->save();
+
+    return response()->json(['success' => true, 'message' => 'Producto desassignat.']);
+}
+
+
 
     
 }
