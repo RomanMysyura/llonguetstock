@@ -71,6 +71,18 @@ public function unsignproduct(Request $request)
     return response()->json(['success' => true, 'message' => 'Producto desassignat.']);
 }
 
+public function createproduct(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required',
+        'quantity' => 'required|integer',
+        'category_id' => 'required|integer'
+    ]);
+
+    Product::create($validated);
+
+    return response()->json(['message' => 'Producto creado']);
+}
 
 
     

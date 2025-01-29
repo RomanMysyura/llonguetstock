@@ -33,6 +33,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin', [AdminController::class, 'show']);
     Route::post('/changeproductquanity', [ProductController::class, 'changeproductquanity']);
     Route::post('/unsignproduct', [ProductController::class, 'unsignproduct']);
+    Route::post('/api/createproduct', [ProductController::class, 'createproduct']);
 });
 
 
