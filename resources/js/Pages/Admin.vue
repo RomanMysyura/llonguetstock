@@ -15,8 +15,8 @@ const showMoviments = () => { activeComponent.value = 'moviments' };
 
 <template>
     <Head title="Admin" />
-    <div class="h-screen w-full bg-white flex">
-        <div class="Menu flex flex-col bg-amber-900 w-64 h-full">
+    <div class="min-h-screen w-full bg-white flex">
+        <div class="Menu flex flex-col bg-amber-900 w-64 min-h-screen">
             <button 
                 class="w-64 h-10 transition-colors duration-200"
                 :class="activeComponent === 'magatzem' ? 'bg-amber-700 text-white' : 'bg-amber-900 hover:bg-amber-700'"
@@ -48,7 +48,11 @@ const showMoviments = () => { activeComponent.value = 'moviments' };
         </div>
 
         <div class="flex-1 p-4">
-            <Magatzem v-if="activeComponent === 'magatzem'" />
+            <Magatzem
+  v-if="activeComponent === 'magatzem'"
+  :goMoviments="showMoviments"
+/>
+
             <Categories v-if="activeComponent === 'categories'" />
             <Productes v-if="activeComponent === 'productes'" />
             <Moviments v-if="activeComponent === 'moviments'" />

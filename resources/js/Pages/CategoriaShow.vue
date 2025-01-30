@@ -59,11 +59,11 @@ const confirmChange = () => {
             {{ category.name }}
         </h1>
 
-        <div class="space-y-4 p-5 rounded products">
-            <div v-for="product in category.products" :key="product.id" class="flex items-center justify-between">
-                <span class="text-lg text-black">{{ product.name }}</span>
+        <div class="space-y-1  rounded products">
+            <div v-for="product in category.products" :key="product.id" class="flex items-center justify-between p-2 rounded-xl">
+                <span class="text-lg text-black font-bold">{{ product.name }}</span>
                 <div class="flex items-center gap-3">
-                    <div class="bg-gray-300 rounded-full h-8 w-8 flex items-center justify-center text-black text-sm font-medium">
+                    <div class="bg-gray-300 rounded-full h-8 w-8 flex items-center justify-center text-black text-sm font-bold">
                         {{ product.quantity }}
                     </div>
 

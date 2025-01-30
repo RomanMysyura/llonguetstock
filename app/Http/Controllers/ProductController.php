@@ -45,6 +45,7 @@ class ProductController extends Controller
 {
     $movements = Movement::orderBy('created_at', 'asc')->get()->map(function ($movement) {
         return [
+            'id'         => $movement->id,
             'name'         => $movement->name,
             'beforevalue'  => $movement->beforevalue,
             'aftervalue'   => $movement->aftervalue,

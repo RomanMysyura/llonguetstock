@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 
 const categories = ref([])
@@ -7,6 +7,10 @@ const newProduct = ref({
     name: '',
     quantity: 0,
     category_id: 1
+})
+
+const allProducts = computed(() => {
+    return categories.value.flatMap(cat => cat.products)
 })
 
 onMounted(() => {
@@ -21,6 +25,11 @@ function createProduct() {
     axios.post('/api/createproduct', newProduct.value)
         .then(res => {
             document.getElementById('my_modal_2').close()
+        })
+        .catch(err => console.error(err))
+    axios.get('/api/getallcategories')
+        .then(res => {
+            categories.value = res.data
         })
         .catch(err => console.error(err))
 }
@@ -56,7 +65,7 @@ function createProduct() {
                         </select>
                     </div>
 
-                    
+
                     <div class="flex justify-end gap-2">
                         <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
                             Guardar
@@ -69,5 +78,30 @@ function createProduct() {
                 </form>
             </div>
         </dialog>
+
+       
+        <table class="table-auto w-full mt-4 ">
+            <thead>
+                <tr class="bg-amber-900 text-white">
+                    <th class="px-4 py-2 text-left">Producte</th>
+                    <th class="px-4 py-2 text-left">Quantitat</th>
+                    <th class="px-4 py-2"></th>
+                </tr>
+            </thead>
+            <tbody class="">
+                <tr v-for="(product, index) in allProducts" :key="product.id"
+                    :class="index % 2 === 0 ? 'bg-gray-100' : 'bg-white'" class="text-black">
+                    <td class="px-4 py-2 text-left">{{ product.name }}</td>
+                    <td class="px-4 py-2 text-left">{{ product.quantity }}</td>
+                    <td class="px-4 py-2">
+                        <button @click="openEditModal(product.id)"
+                            class="ml-auto flex items-center bg-amber-700 text-white gap-1 px-4 py-2 font-semibold rounded hover:bg-amber-900 duration-300 h-6 w-auto">
+                            Editar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
 </template>
