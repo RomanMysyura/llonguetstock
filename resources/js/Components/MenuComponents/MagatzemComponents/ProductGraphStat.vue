@@ -36,6 +36,7 @@ const chartOptions = {
 }
 </script>
 
+
 <template>
     <div class="mt-5">
         <Multiselect v-model="selectedProduct" :options="products" placeholder="Buscar producto..." :searchable="true"
