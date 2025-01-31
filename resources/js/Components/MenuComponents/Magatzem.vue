@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/vue3';
 import { defineProps } from 'vue'
 import GeneralStat from './MagatzemComponents/GeneralStat.vue';
 import LastMovements from './MagatzemComponents/LastMovements.vue';
+import ProductGraphStat from './MagatzemComponents/ProductGraphStat.vue';
 
 const props = defineProps({
   goMoviments: Function
@@ -17,7 +18,7 @@ const props = defineProps({
         </div>
         <GeneralStat />
         <LastMovements :goMoviments="props.goMoviments" />
-
+        <ProductGraphStat/>
 
     </div>
 </template>
