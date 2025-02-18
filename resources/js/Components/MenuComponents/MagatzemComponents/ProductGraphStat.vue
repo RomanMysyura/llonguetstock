@@ -38,7 +38,7 @@ const chartOptions = {
 
 
 <template>
-    <div class="mt-5">
+    <div class="mt-10">
         <Multiselect v-model="selectedProduct" :options="products" placeholder="Buscar producto..." :searchable="true"
             :allow-empty="true" :close-on-select="true" />
         <apex-charts height="350" :type="chartOptions.chart.type" :options="chartOptions" :series="[{
