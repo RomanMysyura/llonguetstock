@@ -45,7 +45,7 @@ onMounted(fetchMovements);
 </script>
 
 <template>
-    <div class="w-full bg-white p-2">
+    <div class="w-full bg-white ">
         <div class="text-black font-bold text-center text-3xl mb-2">
             <p>Moviments de Productes</p>
         </div>

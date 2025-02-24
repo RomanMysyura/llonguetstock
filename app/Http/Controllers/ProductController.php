@@ -66,11 +66,11 @@ public function unsignproduct(Request $request)
     ]);
 
     $product = Product::findOrFail($request->product_id);
-    $product->category_id = null;
-    $product->save();
+    $product->delete();
 
-    return response()->json(['success' => true, 'message' => 'Producto desassignat.']);
+    return response()->json(['success' => true, 'message' => 'Producto eliminado.']);
 }
+
 
 public function createproduct(Request $request)
 {
@@ -85,6 +85,22 @@ public function createproduct(Request $request)
     return response()->json(['message' => 'Producto creado']);
 }
 
+public function updateproduct(Request $request)
+{
+    $validated = $request->validate([
+        'id' => 'required|exists:products,id',
+        'name' => 'required',
+        'quantity' => 'required|integer',
+        'category_id' => 'required|integer'
+    ]);
 
-    
+    $product = Product::findOrFail($validated['id']);
+    $product->update($validated);
+
+    return response()->json(['message' => 'Producto actualizado']);
+
+
+}
+
+
 }

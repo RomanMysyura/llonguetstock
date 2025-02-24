@@ -14,44 +14,34 @@ const showMoviments = () => { activeComponent.value = 'moviments' };
 </script>
 
 <template>
+
     <Head title="Admin" />
     <div class="min-h-screen w-full bg-white flex">
         <div class="Menu flex flex-col bg-amber-900 w-64 min-h-screen">
-            <button 
-                class="w-64 h-10 transition-colors duration-200"
+            <button class="w-64 h-10 transition-colors duration-200"
                 :class="activeComponent === 'magatzem' ? 'bg-amber-700 text-white' : 'bg-amber-900 hover:bg-amber-700'"
-                @click="showMagatzem"
-            >
+                @click="showMagatzem">
                 <p class="text-left ml-2 text-white">Magatzem</p>
             </button>
-            <button 
-                class="w-64 h-10 transition-colors duration-200"
+            <button class="w-64 h-10 transition-colors duration-200"
                 :class="activeComponent === 'categories' ? 'bg-amber-700 text-white' : 'bg-amber-900 hover:bg-amber-700'"
-                @click="showCategories"
-            >
+                @click="showCategories">
                 <p class="text-left ml-2 text-white">Categories</p>
             </button>
-            <button 
-                class="w-64 h-10 transition-colors duration-200"
+            <button class="w-64 h-10 transition-colors duration-200"
                 :class="activeComponent === 'productes' ? 'bg-amber-700 text-white' : 'bg-amber-900 hover:bg-amber-700'"
-                @click="showProductes"
-            >
+                @click="showProductes">
                 <p class="text-left ml-2 text-white">Productes</p>
             </button>
-            <button 
-                class="w-64 h-10 transition-colors duration-200"
+            <button class="w-64 h-10 transition-colors duration-200"
                 :class="activeComponent === 'moviments' ? 'bg-amber-700 text-white' : 'bg-amber-900 hover:bg-amber-700'"
-                @click="showMoviments"
-            >
+                @click="showMoviments">
                 <p class="text-left ml-2 text-white">Moviments</p>
             </button>
         </div>
 
         <div class="flex-1 p-4">
-            <Magatzem
-  v-if="activeComponent === 'magatzem'"
-  :goMoviments="showMoviments"
-/>
+            <Magatzem v-if="activeComponent === 'magatzem'" :goMoviments="showMoviments" />
 
             <Categories v-if="activeComponent === 'categories'" />
             <Productes v-if="activeComponent === 'productes'" />
