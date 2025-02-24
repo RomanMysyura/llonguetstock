@@ -34,8 +34,8 @@ Route::middleware('admin')->group(function () {
     Route::post('/changeproductquanity', [ProductController::class, 'changeproductquanity']);
     Route::post('/unsignproduct', [ProductController::class, 'unsignproduct']);
     Route::post('/api/createproduct', [ProductController::class, 'createproduct']);
+    Route::post('/api/updateproduct', [ProductController::class, 'updateproduct']);
 });
-
 
 
 require __DIR__.'/auth.php';
