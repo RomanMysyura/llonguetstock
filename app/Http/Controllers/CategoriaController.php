@@ -22,6 +22,14 @@ public function getallcategories()
     return response()->json($categories);
 }
 
+public function destroy(Request $request)
+{
+    $category = Category::findOrFail($request->id);
+    $category->products()->delete(); 
+    $category->delete();
+
+    return response()->json(['message' => 'Categoría y productos eliminados correctamente']);
+}
 
 
 public function store(Request $request)

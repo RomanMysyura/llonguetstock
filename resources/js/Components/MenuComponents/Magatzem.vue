@@ -16,9 +16,11 @@ const props = defineProps({
         <div class="text-black font-bold text-center text-3xl">
             <p>Magatzem</p>
         </div>
+       
         <GeneralStat />
         <LastMovements :goMoviments="props.goMoviments" />
-        <ProductGraphStat/>
+
+        <!-- <ProductGraphStat/> -->
 
     </div>
 </template>

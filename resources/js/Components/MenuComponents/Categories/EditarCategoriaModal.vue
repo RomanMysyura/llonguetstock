@@ -50,8 +50,18 @@ const cancelDeletion = () => {
 
 
 const confirmDeletion = () => {
-  console.log('Categoría eliminada')
+  axios.delete(`/api/category/${localCategory.value.id}`)
+  .then(response => {
+    emits('update-category', null); // Envía null para recargar
+    document.getElementById('my_modal_3').close();
+  })
+  .catch(error => {
+    console.error(error);
+    document.getElementById('my_modal_3').close();
+  });
+
 }
+
 </script>
 
 <template>
