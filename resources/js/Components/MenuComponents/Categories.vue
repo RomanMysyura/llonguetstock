@@ -49,25 +49,30 @@ const handleFileChange = (event) => {
   }
 };
 
-const updateCategory = (updatedCategory) => {
-  const index = categories.value.findIndex(c => c.id === updatedCategory.id);
-  if(index > -1){
-    categories.value[index] = { ...updatedCategory };
+const updateCategory = (payload) => {
+  if (payload === null) {
+    getAllCategories(); // Recarga la lista si se recibe null
+  } else {
+    // Actualiza la categoría en el array si lo necesitas
   }
 };
 
-onMounted(() => {
+
+const getAllCategories = () => {
   axios.get('/api/getallcategories')
     .then(response => {
       categories.value = response.data;
     })
-    .catch(error => {
-      console.error('Error al obtener las categorías:', error);
-    })
+    .catch(error => console.error(error))
     .finally(() => {
       isLoading.value = false;
     });
+};
+
+onMounted(() => {
+  getAllCategories();
 });
+
 </script>
 
 <template>

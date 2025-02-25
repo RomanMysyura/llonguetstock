@@ -35,6 +35,8 @@ Route::middleware('admin')->group(function () {
     Route::post('/unsignproduct', [ProductController::class, 'unsignproduct']);
     Route::post('/api/createproduct', [ProductController::class, 'createproduct']);
     Route::post('/api/updateproduct', [ProductController::class, 'updateproduct']);
+    Route::delete('/api/category/{id}', [CategoriaController::class, 'destroy']);
+
 });
 
 
